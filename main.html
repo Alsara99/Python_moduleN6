@@ -4,9 +4,116 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Page 1</title>
-    <link href="static/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <style>
+        .col-2 {
+            color: #dee2e6;
+            background-color: #212529;
+            padding-bottom: 780px;
+        }
+        .menu_points {
+            color: #dee2e6;
+            background-color: #212529;
+            padding-bottom: 15px
+        }
+        .account {
+            border: none;
+            color: white;
+            padding-top: 610px
+        }
+        .dropdown-menu {
+            background-color: #495057
+        }
+        .dropdown-item {
+            color: #dee2e6
+        }
+        .main_info {
+            text-align: center;
+            padding-top: 100px
+        }
+        .card_name {
+            padding-top : 15px;
+            background-color: grey
+        }
+    </style>
 </head>
 <body>
-
+<div class="row">
+    <div class="col-2">
+        <img class="menu_image" src="Bootstrap_logo.svg.png" width="50" height="40"/>
+        Меню
+        <hr>
+        <div class='menu_points'>
+            <img src="i.jpg" width="30" height="25"/>
+            Главная
+        </div>
+        <div class='menu_points'>
+            <img src="i(1).jpg" width="30" height="25"/>
+            Категории
+        </div>
+        <div class='menu_points'>
+            <img src="i(2).jpg" width="30" height="25"/>
+            Заказы
+        </div>
+        <div class='menu_points'>
+            <img src="i(3).png" width="30" height="30"/>
+            Контакты
+        </div>
+        <div class="account">
+            <hr>
+            <img src="i(4).jpg" width="45" height="40"/>
+            <button class="btn btn-empty dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                    style="color: #dee2e6; font-weight: bold">
+                Пользователь
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Профиль</a></li>
+                <li><a class="dropdown-item" href="#">Выход</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-8">
+        <div class="main_info">
+            <h1>Главная</h1>
+            Вы находитесь на сайте, предназначенном для продажи товаров.
+        </div>
+        <div class="row" style="gap: 120px; text-align: center; padding-top: 50px">
+            <div class="col-3">
+                <div class="card" style="width: 18rem">
+                    <div class="card-header"><h4>Товар 1</h4></div>
+                    <div class="card-body">
+                        <h1 class="card-title">$ 100</h1>
+                        <p class="card-text">blablabla blebleble blublublu</p>
+                        <a href="#" class="btn btn-outline-primary">Купить</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card" style="width: 18rem">
+                    <div class="card-header"><h4>Товар 1</h4></div>
+                    <div class="card-body">
+                        <h1 class="card-title">$ 100</h1>
+                        <p class="card-text">blablabla blebleble blublublu</p>
+                        <a href="#" class="btn btn-outline-primary">Купить</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="card" style="width: 18rem">
+                    <div class="card-header"><h4>Товар 1</h4></div>
+                    <div class="card-body">
+                        <h1 class="card-title">$ 100</h1>
+                        <p class="card-text">blablabla blebleble blublublu</p>
+                        <a href="#" class="btn btn-outline-primary">Купить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-1"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/js/bootstrap.bundle.min.js">
+</script>
 </body>
 </html>
