@@ -6,7 +6,7 @@ serverPort = 63342
 
 
 class MyServer(BaseHTTPRequestHandler):
-    def do_get(self):
+    def do_GET(self):
         with open("../page4.html", "r", encoding="utf-8") as file:
             html_content = file.read()
         self.send_response(200)
