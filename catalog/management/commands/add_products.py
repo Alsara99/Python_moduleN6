@@ -5,5 +5,8 @@ class Command(BaseCommand):
     help = 'Add test products to the database'
 
     def handle(self, *args, **kwargs):
-        Category.objects.all().delete()
-        Product.objects.all().delete()
+        products = Product.objects.all()
+        categories = Category.objects.all()
+
+        categories.delete()
+        products.delete()
