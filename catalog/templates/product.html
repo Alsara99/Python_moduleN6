@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<button type="button" class="btn btn-lg btn-block btn-outline-primary" onclick="window.location.href='http://127.0.0.1:8000';">Назад</button>
+<div class="container mt-5">
+  <h1 class="mb-4">{{ product.name }}</h1>
+  <ul class="list-group">
+    <p>Наименование: {{ product.name }}</p>
+    <p>Описание: {{ product.description }}</p>
+    <p><img src="product.image.jpg"></p>
+    <p>Категория: {{ product.category }}</p>
+    <p>Цена: {{ product.price }}</p>
+    <p>Дата создания: {{ product.date_created }}</p>
+    <p>Дата последнего изменения: {{ product.date_last_changed }}</p>
+  </ul>
+</div>
+{% endblock %}
