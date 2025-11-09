@@ -9,7 +9,7 @@
   <ul class="list-group">
     <p>Наименование: {{ product.name }}</p>
     <p>Описание: {{ product.description }}</p>
-    <p><img src="product.image.jpg"></p>
+    <p><img src="{{ product.image.url }}"></p>
     <p>Категория: {{ product.category }}</p>
     <p>Цена: {{ product.price }}</p>
     <p>Дата создания: {{ product.date_created }}</p>
