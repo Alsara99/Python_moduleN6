@@ -29,10 +29,10 @@ class Post(models.Model):
 
 
     def __str__(self):
-        return self.name
+        return self.title
 
     class Meta:
         verbose_name = "Пост"
         verbose_name_plural = "Посты"
-        ordering = ["name", "if_posted"]
+        ordering = ["title", "is_posted"]
 
