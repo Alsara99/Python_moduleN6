@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 
 class PostsListView(ListView):
     model = Post
-    template_name = "home.html"
+    template_name = "posts.html"
     context_object_name = "posts"
 
     def get_queryset(self):
@@ -41,5 +41,5 @@ class PostUpdateView(UpdateView):
 
 class PostDeleteView(DeleteView):
     model = Post
-    template_name = "post_form.html"
+    template_name = "post_confirm_delete.html"
     success_url = reverse_lazy("home")

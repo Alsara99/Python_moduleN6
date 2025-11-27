@@ -1,9 +1,9 @@
-{% extends 'blogs/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}Детали книги{% endblock %}
 
 {% block content %}
-{% include 'blogs/header.html' %}
+{% include 'header.html' %}
 <p><img src="{{ product.image.url }}"></p>
 <h2>{{ post.title }}</h2>
 <p>{{ post.text }}</p>
