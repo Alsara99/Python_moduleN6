@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Список книг{% endblock %}
+
+{% block content %}
+{% include 'header.html' %}
+<h2>Список постов</h2>
+<ul class="list-group">
+    {% for post in posts %}
+        <li class="list-group-item">
+            <a href="{% url 'post' book.pk %}">{{ post.image }}</a> - {{ post.created_at|date:"d M Y" }} - {{ post.title }} - {{ post.text }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
