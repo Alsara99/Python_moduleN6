@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog',
     'blogs',
-    'forms',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -151,4 +151,4 @@ EMAIL_HOST_USER = 'nelysisgk@yandex.ru'
 EMAIL_HOST_PASSWORD = 'exeiinoiyjtaixkm'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-AUTH_USER_MODEL = 'forms.CustomUser'
+AUTH_USER_MODEL = 'users.CustomUser'

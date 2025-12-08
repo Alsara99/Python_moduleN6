@@ -1,10 +1,10 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
-from forms.apps import FormsConfig
+from users.apps import UsersConfig
 from .views import *
 
 
-app_name = FormsConfig.name
+app_name = UsersConfig.name
 
 urlpatterns = [
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
