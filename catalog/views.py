@@ -1,4 +1,6 @@
 from django.views.generic import DetailView, ListView, TemplateView, CreateView, UpdateView, DeleteView
+from django.shortcuts import get_object_or_404, redirect
+from django.http import HttpResponseForbidden
 from .models import Product
 from .forms import ProductForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -28,13 +30,28 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
 
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
-    model = Product
-    form_class = ProductForm
-    template_name = 'product_form.html'
-    success_url = '/catalog/'
+    def post(self, request, product_id):
+        product = get_object_or_404(Product, id=product_id)
+
+        if not request.user.has_perm('catalog.can_edit'):
+            return HttpResponseForbidden("У вас нет прав для редактирования продукта.")
+
+        model = Product
+        form_class = ProductForm
+        template_name = 'product_form.html'
+        success_url = '/catalog/'
+
+        return redirect('catalog')
 
 
 class ProductDeleteView(LoginRequiredMixin, DeleteView):
-    model = Product
-    template_name = "product_confirm_delete.html"
-    success_url = '/catalog/'
+    def post(self, request, product_id):
+        product = get_object_or_404(Product, id=product_id)
+
+        if not request.user.has_perm('catalog.can_unpublish_product'):
+            return HttpResponseForbidden("У вас нет прав для удаления продукта.")
+
+        product.delete()
+
+        return redirect('catalog')
+

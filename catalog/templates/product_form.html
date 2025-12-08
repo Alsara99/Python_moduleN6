@@ -8,7 +8,9 @@
     {% csrf_token %}
     {{ form.non_field_errors }}
     {{ form.as_p }}
+    {% if perms.catalog.can_edit %}
     <button type="submit" class="btn btn-primary">Сохранить</button>
+    {% endif %}
     <button type="button" class="btn btn-primary" onclick="window.location.href='http://127.0.0.1:8000/catalog'">Отмена</button>
 </form>
 {% endblock %}
