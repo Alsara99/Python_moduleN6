@@ -1,11 +1,16 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
 class Product(models.Model):
     name = models.CharField(
         max_length=50,
         verbose_name="Наименование товара",
         help_text="Введите наименование товара",
+    )
+    is_posted = models.BooleanField(
+        default=False, verbose_name="Статус публикации ", help_text="Установите статус публикации"
     )
     description = models.TextField(
         verbose_name="Описание товара", help_text="Введите описание товара"
@@ -26,6 +31,12 @@ class Product(models.Model):
         verbose_name="Цена за покупку товара",
         help_text="Введите цену за покупку товара",
     )
+    owner = models.ForeignKey(User,
+        on_delete=models.CASCADE,
+        verbose_name='Владелец',
+        related_name='products',
+        null=True, blank=True
+    )
     date_created = models.DateField(
         verbose_name="Дата создания товара", help_text="Введите дату создания товара"
     )
@@ -41,6 +52,9 @@ class Product(models.Model):
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
         ordering = ["name", "category"]
+        permissions = [
+            ("can_unpublish_product", "Can unpublish product"),
+        ]
 
 
 class Category(models.Model):
