@@ -1,6 +1,9 @@
 from django.views.generic import DetailView, ListView, TemplateView, CreateView, UpdateView, DeleteView
+from django.core.cache import cache
 from django.shortcuts import get_object_or_404, redirect
 from django.http import HttpResponseForbidden
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 from .models import Product
 from .forms import ProductForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -12,10 +15,35 @@ class ProductsListView(ListView):
     context_object_name = "products"
 
 
+class ProductsListViewByCategory(ListView):
+    model = Product
+    template_name = "products_by_category.html"
+    context_object_name = "products"
+
+
+    def get_queryset(self):
+        queryset = cache.get('products_queryset')
+        if not queryset:
+            queryset = super().get_queryset()
+            cache.set('products_queryset', queryset, 60 * 15)
+        return queryset
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        student_id = self.object.id
+        # Добавляем в контекст полное имя, средний балл и статус сдачи предмета
+        context['full_name'] = StudentService.get_full_name(student_id)
+        context['average_grade'] = StudentService.calculate_average_grade(student_id)
+        context['has_passed'] = StudentService.has_passed(student_id)
+        return context
+
+
 class ContactsTemplateView(TemplateView):
     template_name = "contacts.html"
 
 
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = "product.html"

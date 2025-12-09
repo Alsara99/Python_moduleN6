@@ -152,3 +152,10 @@ EMAIL_HOST_PASSWORD = 'exeiinoiyjtaixkm'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
+    }
+}
